@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import './App.css'
 const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
 const CAT_PREFIX_END_POINT = 'https://cataas.com/'
 // const CAT_ENDPOINT_IMAGE_URL = `https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`
@@ -26,8 +27,10 @@ export function App () {
   return (
     <main>
       <h1>App de Gatuchis</h1>
-      {fact && <p>{fact}</p>}
-      {imageUrl && <img src={`${CAT_PREFIX_END_POINT}${imageUrl}`} alt={`Image extracted using the frist three words for ${fact}`} />}
+      <section>
+        {fact && <p>{fact}</p>}
+        {imageUrl && <img src={`${CAT_PREFIX_END_POINT}${imageUrl}`} alt={`Image extracted using the frist three words for ${fact}`} />}
+      </section>
     </main>
   ) // renderizado condicional
 }
