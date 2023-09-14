@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "02-tic-tac-toe",
+			"path": "../02-tic-tac-toe"
+		}
+	],
+	"settings": {}
+}
