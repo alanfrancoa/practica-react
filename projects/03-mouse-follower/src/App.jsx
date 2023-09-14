@@ -37,6 +37,16 @@ const FollowMouse = () => {
     }*/
   }, [enabled])
   
+  
+  useEffect(()=>{
+    document.body.classList.toggle('no-cursor', enabled)
+
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+
+  }, [enabled])
+
   return (
     <main>
       <div style={{
@@ -60,7 +70,6 @@ const FollowMouse = () => {
 }
 
 function App() {
-
 
   return (
     <main>
