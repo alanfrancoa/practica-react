@@ -3,11 +3,12 @@ import { WINNER_COMBOS } from "../constants"
 export const checkWinnerFrom = (boardToCheck) => {
     //revisamos combinaciones ganadoras, para ver si x u o gana
     for (const combo of WINNER_COMBOS) {
-      const [a, b, c] = combo
+      const [a, b, c, d] = combo
       if (
         boardToCheck[a] &&
         boardToCheck[a] === boardToCheck[b] &&
-        boardToCheck[a] === boardToCheck[c]
+        boardToCheck[a] === boardToCheck[c] &&
+        boardToCheck[a] === boardToCheck[d]
       ) {
          return boardToCheck[a];
       }

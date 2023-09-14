@@ -60,7 +60,7 @@ body {
 
 .board .game {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
@@ -120,8 +120,8 @@ body {
 }
 
 .square {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border: 2px solid #eee;
   border-radius: 5px;
   display: grid;
