@@ -8,20 +8,23 @@ export function App () {
   const [fact, setFact] = useState()
   const [imageUrl, setImageUrl] = useState()
   useEffect(() => {
+    if (!fact) return
+    const firstThreeWords = fact.split(' ', 3).join(' ') // split(' ').slice(0, 3).join(' ') para que sean 3 palabras
+    console.log(firstThreeWords)
+
+    fetch(`https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`)
+      .then(res => res.json())
+      .then(response => {
+        const { url } = response
+        setImageUrl(url)
+      })
+  }, [fact])
+  useEffect(() => {
     fetch(CAT_ENDPOINT_RANDOM_FACT)
       .then(res => res.json())
       .then(data => {
         const { fact } = data
         setFact(fact)
-        const firstThreeWords = fact.split(' ', 3).join(' ') // split(' ').slice(0, 3).join(' ') para que sean 3 palabras
-        console.log(firstThreeWords)
-
-        fetch(`https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`)
-          .then(res => res.json())
-          .then(response => {
-            const { url } = response
-            setImageUrl(url)
-          })
       })
   }, [])
   return (
