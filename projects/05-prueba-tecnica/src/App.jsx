@@ -7,6 +7,15 @@ const CAT_PREFIX_END_POINT = 'https://cataas.com/'
 export function App () {
   const [fact, setFact] = useState()
   const [imageUrl, setImageUrl] = useState()
+
+  const getRandomFact = () => {
+    fetch(CAT_ENDPOINT_RANDOM_FACT)
+      .then(res => res.json())
+      .then(data => {
+        const { fact } = data
+        setFact(fact)
+      })
+  }
   useEffect(() => {
     if (!fact) return
     const firstThreeWords = fact.split(' ', 3).join(' ') // split(' ').slice(0, 3).join(' ') para que sean 3 palabras
@@ -19,17 +28,15 @@ export function App () {
         setImageUrl(url)
       })
   }, [fact])
-  useEffect(() => {
-    fetch(CAT_ENDPOINT_RANDOM_FACT)
-      .then(res => res.json())
-      .then(data => {
-        const { fact } = data
-        setFact(fact)
-      })
-  }, [])
+
+  useEffect(getRandomFact, [])
+  const handleClick = () => {
+    getRandomFact()
+  }
   return (
     <main>
       <h1>App de Gatuchis</h1>
+      <button onClick={handleClick}>Get new fact</button>
       <section>
         {fact && <p>{fact}</p>}
         {imageUrl && <img src={`${CAT_PREFIX_END_POINT}${imageUrl}`} alt={`Image extracted using the frist three words for ${fact}`} />}
