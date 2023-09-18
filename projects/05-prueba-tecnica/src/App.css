@@ -2,7 +2,7 @@ main {
     display: flex;
     flex-direction: column;
     place-items: center;
-    max-width: 800px;
+    max-width: 750px;
     margin: 0  auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
