@@ -25,8 +25,9 @@ export function App () {
       })
   }, [fact])
 
-  const handleClick = () => {
-    getRandomFact(setFact)
+  const handleClick = async () => {
+    const newFact = await getRandomFact()
+    setFact(newFact)
   }
 
   return (
