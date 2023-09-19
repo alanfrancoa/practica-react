@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react'
 import { getRandomFact } from './services/facts'
 import './App.css'
-
 const CAT_PREFIX_END_POINT = 'https://cataas.com/'
-// const CAT_ENDPOINT_IMAGE_URL = `https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`
 
-export function App () {
-  const [fact, setFact] = useState()
+function useCatImage ({ fact }) {
   const [imageUrl, setImageUrl] = useState()
-
-  useEffect(() => { getRandomFact(setFact) }, [])
-
   // recuperar imagen cada vez que tenemos un nuevo fact
   useEffect(() => {
     if (!fact) return
@@ -24,6 +18,17 @@ export function App () {
         setImageUrl(url)
       })
   }, [fact])
+  return { imageUrl }
+} // devuelve el IMG pasando el hecho.
+
+export function App () {
+  const [fact, setFact] = useState()
+  const { imageUrl } = useCatImage({ fact })
+
+  // recuperar cita al cargar la pagina
+  useEffect(() => {
+    getRandomFact().then(newFact => setFact(newFact))
+  }, [])
 
   const handleClick = async () => {
     const newFact = await getRandomFact()
