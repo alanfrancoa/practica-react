@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { getRandomFact } from './services/facts'
 import './App.css'
-const CAT_ENDPOINT_RANDOM_FACT = 'https://catfact.ninja/fact'
+
 const CAT_PREFIX_END_POINT = 'https://cataas.com/'
 // const CAT_ENDPOINT_IMAGE_URL = `https://cataas.com/cat/says/${firstThreeWords}?size=50&color=red&json=true`
 
@@ -8,14 +9,9 @@ export function App () {
   const [fact, setFact] = useState()
   const [imageUrl, setImageUrl] = useState()
 
-  const getRandomFact = () => {
-    fetch(CAT_ENDPOINT_RANDOM_FACT)
-      .then(res => res.json())
-      .then(data => {
-        const { fact } = data
-        setFact(fact)
-      })
-  }
+  useEffect(() => { getRandomFact(setFact) }, [])
+
+  // recuperar imagen cada vez que tenemos un nuevo fact
   useEffect(() => {
     if (!fact) return
     const firstThreeWords = fact.split(' ', 3).join(' ') // split(' ').slice(0, 3).join(' ') para que sean 3 palabras
@@ -29,10 +25,10 @@ export function App () {
       })
   }, [fact])
 
-  useEffect(getRandomFact, [])
   const handleClick = () => {
-    getRandomFact()
+    getRandomFact(setFact)
   }
+
   return (
     <main>
       <h1>App de Gatuchis</h1>
