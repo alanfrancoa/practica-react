@@ -1,7 +1,6 @@
 import { useCatFact } from './hooks/useCatFact'
 import { useCatImage } from './hooks/useCatImage'
 import './App.css'
-import { Otro } from './Components/Otro'
 
 export function App () {
   const { fact, refreshFact } = useCatFact()
