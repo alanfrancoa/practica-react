@@ -1,30 +1,31 @@
 // import { useState } from 'react'
+import { useRef } from 'react'
 import './App.css'
 import { Movies } from './Components/Movies'
-import responseMovies from './mocks/whit-results.json'
-// import withoutResults from './mocks/no-results.json'
+import { useMovies } from './hooks/useMovies'
 
 function App() {
-  const movies = responseMovies.Search
+  const { movies } = useMovies()
+  const inputRef = useRef()
+  const handleClick = () => {
+    const inputEl = inputRef.current
+    const value = inputEl.value
+    alert(value)
+  }
 
-  const mappedMovies = movies?.map(movie => ({
-    id: movie.imdbID,
-    title: movie.Title,
-    year: movie.Year,
-    poster: movie.Poster
-  }))
   return (
       <div className='page'>
+
       <header>
         <h1>Buscador de peliculas</h1>
         <form className='form'>
-          <input placeholder='Avengers,The Devil Wears Prada, Star Wars, The Matrix...'/>
-        <button type='submit'>Buscar</button>
+          <input ref = {inputRef} placeholder='Avengers,The Devil Wears Prada, Star Wars, The Matrix...'/>
+        <button onClick={handleClick} type='submit'>Buscar</button>
         </form>
-      </header>
+      </header> 
 
       <main>
-        <Movies movies={mappedMovies}/>
+        <Movies movies={movies}/>
       </main>
     </div>
   )
