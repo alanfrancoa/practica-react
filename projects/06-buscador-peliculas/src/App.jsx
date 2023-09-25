@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { useState } from 'react'
 import './App.css'
 import { Movies } from './Components/Movies'
 import { useMovies } from './hooks/useMovies'
+import debounce from 'just-debounce-it'
 
 function useSearch () {
   const [ search, updateSearch ] = useState('')
@@ -37,6 +38,13 @@ function App() {
   const [sort, setSort] = useState(false)
   const {search , updateSearch, error} = useSearch()
   const { movies, getMovies, loading } = useMovies({search , sort})
+  
+  const debouncedGetMovies  = useCallback(
+    debounce(search => {
+    console.log('search', search)
+    getMovies({search})
+  }, 500)
+  , [getMovies]) 
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -48,7 +56,9 @@ function App() {
   }
 
   const handleChange = (event) => {
-    updateSearch(event.target.value)
+    const newSearch = event.target.value
+    updateSearch(newSearch)
+    debouncedGetMovies(newSearch) //cada vez que detecta un cambio en el imput 
   }
 
   return (
