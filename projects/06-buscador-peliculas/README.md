@@ -8,8 +8,9 @@ Endopoint: http://www.omdbapi.com/?apikey=4287ad07&s=
 Requerimientos:
 ✔️Necesita mostrar un input para buscar la película y un botón para buscar.
 ✔️Lista las películas encontradas y muestra el titulo, año y poster.
-Hacer que formulario funcione.
-Haz que las peliculas se muestren en un grid responsive.
+✔️Hacer que formulario funcione.
+✔️Hacer fetching de datos
+✔️Haz que las peliculas se muestren en un grid responsive.
 
 Primera iteracion:
 Evitar que se haga la misma busqueda dos veces seguidas.
