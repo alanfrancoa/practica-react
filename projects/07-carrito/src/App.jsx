@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -9,11 +7,14 @@ function App() {
   const handleClick = () => {
     setCount(count + 1)
   }
-
+  const handleClear = () => {
+    setCount(0)
+  }
   return (
     <>
       <h1 onClick={handleClick}>Tienda de plantas y carrito de compras</h1>
       <p>{count}</p>
+      <button onClick={handleClear}>Clear</button>
     </>
   )
 }
