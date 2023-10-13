@@ -1,14 +1,14 @@
 import {useState} from 'react'
+import propTypes from 'prop-types'
 
-const AgregarTarea = () => {
+const AgregarTarea = ({agregarTarea}) => {
     const [inputValue, setInputValue] = useState('')
     const onInputChange = (event) => {
         setInputValue(event.target.value)
     }
     const onSubmit = (event) => {
         event.preventDefault()
-        console.log(inputValue)
-
+        agregarTarea(inputValue)
     }
   return (
     <form onSubmit={onSubmit}>
@@ -23,3 +23,7 @@ const AgregarTarea = () => {
 }
 
 export default AgregarTarea
+
+AgregarTarea.propTypes = {
+    agregarTarea: propTypes.string.isRequired,
+}
