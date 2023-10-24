@@ -69,7 +69,8 @@ function App() {
         <form className='form' onSubmit={handleSubmit}>
           <input style={{ border: '1px solid transparent', borderColor: error ? 'red' : 'transparent'}} onChange={handleChange} value={search} name ='query' placeholder='Avengers,The Devil Wears Prada, Star Wars, The Matrix...'/>
           <input type='checkbox' onChange={handleSort} checked={sort} />
-        <button type='submit'>Buscar</button>
+          <p className='para'>A-Z</p>
+        <button type='submit' className='btn-sbmt'>Buscar</button>
         </form>
         {error && <p style={{color:'red'}}>{error}</p>}
       </header> 
