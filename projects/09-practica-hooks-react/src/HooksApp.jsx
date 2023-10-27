@@ -1,4 +1,4 @@
-import FormularioComponent from "./components/FormularioComponent"
+import UsuariosComponent from "./components/UsuariosComponent"
 
 
 const HooksApp = () => {
@@ -6,7 +6,7 @@ const HooksApp = () => {
     <>
     <h1>Hooks App</h1>
     <hr />
-    <FormularioComponent />
+    <UsuariosComponent />
     </>
   )
 }
