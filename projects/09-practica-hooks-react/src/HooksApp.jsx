@@ -1,11 +1,11 @@
-import CalculosPesados from "./components/CalculosPesados"
+import CallBackComponent from "./components/CallBackComponent"
 
 const HooksApp = () => {
   return (
     <>
     <h1>Hooks App</h1>
     <hr />
-    <CalculosPesados />
+    <CallBackComponent />
     </>
   )
 }
