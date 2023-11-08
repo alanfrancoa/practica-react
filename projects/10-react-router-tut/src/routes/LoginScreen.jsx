@@ -1,4 +1,6 @@
+import { UserContext } from "../context/UserContext"
 import useForm from "../hooks/useForm"
+import { useContext } from "react"
 
 const LoginScreen = () => {
   const initialForm = {
@@ -10,9 +12,11 @@ const LoginScreen = () => {
 
   const {formState, nombre, tecnologia, mail, redes, onInputChange} = useForm(initialForm)
   
+  const {setUsuario} = useContext(UserContext)
+
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(formState)
+    setUsuario(formState)
   }
   return (
     <>
