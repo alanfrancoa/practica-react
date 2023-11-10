@@ -4,6 +4,7 @@ const WeatherApp = () => {
 
     const urlBase = 'https://api.openweathermap.org/data/2.5/weather'
     const API_KEY = '9763f32b01a3749162e1a6f260e28264'
+    const difKelvin = 273.15
     const [ciudad, setCiudad] = useState('')
     const [dataClima, setDataClima] = useState(null)
 
@@ -17,7 +18,7 @@ const WeatherApp = () => {
     }
 
     const fetchClima = async () => {
-        try{ //https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=9763f32b01a3749162e1a6f260e28264
+        try{ 
             const response = await fetch(`${urlBase}?q=${ciudad}&APPID=${API_KEY}`)
             const data = await response.json()
             setDataClima(data)
@@ -41,6 +42,15 @@ const WeatherApp = () => {
                 />
             <button type='submit'>Buscar</button>
         </form>
+            {
+                dataClima && (
+                    <div>
+                        <h2>{dataClima.name}</h2>
+                        <p>Temperatura: {parseInt(dataClima?.main?.temp - difKelvin)} °C</p>
+                        <img src={`https://openweathermap.org/img/wn/${dataClima.weather[0].icon}@2x.png`} alt={dataClima.weather[0].description}/>
+                        <p>Condición meteorologica: {dataClima.weather[0].description}</p>
+                    </div>
+                )}
     </div>
   )
 }
