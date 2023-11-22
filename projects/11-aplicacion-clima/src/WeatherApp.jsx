@@ -1,9 +1,7 @@
 import { useState } from "react"
-
+import fetchClima from "./services/weather"
 const WeatherApp = () => {
 
-    const urlBase = 'https://api.openweathermap.org/data/2.5/weather'
-    const API_KEY = '9763f32b01a3749162e1a6f260e28264'
     const difKelvin = 273.15
     const [ciudad, setCiudad] = useState('')
     const [dataClima, setDataClima] = useState(null)
@@ -14,20 +12,7 @@ const WeatherApp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (ciudad.length > 0) fetchClima()
-    }
-
-    const fetchClima = async () => {
-        try{ 
-            const response = await fetch(`${urlBase}?q=${ciudad}&APPID=${API_KEY}`)
-            const data = await response.json()
-            setDataClima(data)
-            console.log(dataClima)
-
-        }
-        catch(error){
-            console.error('Ocurrio el siguiente error: ', error)
-        }
+        if (ciudad.length > 0) fetchClima(ciudad, setDataClima)
     }
 
   return (
