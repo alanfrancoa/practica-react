@@ -7,11 +7,13 @@ const CarritoApp = () => {
   return (
     <>
         <NavBar></NavBar>
+        <div className="container">
         <Routes>
             <Route path="/" element={<ComprasPage></ComprasPage>}></Route>
             <Route path="/carrito" element={<CarritoPage></CarritoPage>}></Route>
             <Route path="/*" element={<Navigate to="/"></Navigate>}></Route>
         </Routes>
+        </div>
     </>
   )
 }
