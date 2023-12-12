@@ -1,16 +1,10 @@
-import Card from "../components/Card"
-import { useState, useEffect } from "react"
-const ComprasPage = () => {
-    const [productos, setProductos] = useState([])
+import { Card } from "../components/Card"
+import { ProductosContext } from "../context/ProductosProvider"
+import { useContext } from "react"
 
-    const fetchProductos = async () => {
-        const response = await fetch("https://fakestoreapi.com/products")
-        const data = await response.json()
-        setProductos(data)
-    }
-    useEffect(() => {
-      fetchProductos()
-    }, [])
+export const ComprasPage = () => {
+
+  const productos  = useContext(ProductosContext)
     
   return (
     <>
@@ -29,5 +23,3 @@ const ComprasPage = () => {
     </>
   )
 }
-
-export default ComprasPage

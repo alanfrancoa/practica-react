@@ -1,8 +1,7 @@
 
-const CarritoPage = () => {
+export const CarritoPage = () => {
   return (
     <div>CarritoPage</div>
   )
 }
 
-export default CarritoPage

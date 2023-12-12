@@ -2,7 +2,7 @@ import { Badge } from "@mui/material"
 import { ShoppingCart } from "@mui/icons-material"
 import { NavLink } from "react-router-dom"
 
-const NavBar = () => {
+export const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -27,5 +27,3 @@ const NavBar = () => {
     </nav>
   )
 }
-
-export default NavBar

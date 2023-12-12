@@ -2,7 +2,7 @@ import { useState } from "react"
 import PropTypes from 'prop-types';
 import "../styles/card.css"
 
-const Card = ({ imagen, titulo, descripcion, precio }) => {
+export const Card = ({ imagen, titulo, descripcion, precio }) => {
 
     const [added, setAdded] = useState(false)
 
@@ -36,4 +36,3 @@ Card.propTypes = {
     // Asegura que 'imagen' sea un string y sea requerido en el componente
 };
 
-export default Card
