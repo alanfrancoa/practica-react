@@ -1,37 +1,26 @@
+import { useState, useEffect } from 'react';
+import { ProductosContext } from './ProductosContext'; 
 
-import { useState, useEffect, createContext } from 'react'
-//import PropTypes from 'prop-types'
-
-const ProductosContext = createContext()
-
-
- const ProductosProvider = ({ children }) => {
-
-    const [productos, setProductos] = useState([])
+export const ProductosProvider = ({ children }) => {
+    const [productos, setProductos] = useState([]);
 
     const fetchProductos = async () => {
         try {
-            const response = await fetch("https://fakestoreapi.com/products")
-            const data = await response.json()
-            console.log(data)
-            setProductos(data)
-            
-            
+            const response = await fetch("https://fakestoreapi.com/products");
+            const data = await response.json();
+            setProductos(data);
+        } catch (e) {
+            console.error("Hay error: ", e);
         }
-        catch (e) {
-            console.error("Hay error: ", e)
-        }
-    }
+    };
 
     useEffect(() => {
-        fetchProductos()
-    }, [])
+        fetchProductos();
+    }, []);
 
     return (
         <ProductosContext.Provider value={productos}>
             {children}
-        </ ProductosContext.Provider>
-    )
-}
-
-export {ProductosContext, ProductosProvider} 
+        </ProductosContext.Provider>
+    );
+};

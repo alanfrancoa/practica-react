@@ -1,5 +1,5 @@
 import { Card } from "../components/Card"
-import { ProductosContext } from "../context/ProductosProvider"
+import { ProductosContext } from "../context/ProductosContext"
 import { useContext } from "react"
 
 export const ComprasPage = () => {

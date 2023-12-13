@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 import  { NavBar } from "./components/NavBar"
-import{ ProductosProvider }   from "./context/ProductosProvider"
+import { ProductosProvider } from "./context/ProductosProvider"
 import { CarritoPage } from "./pages/CarritoPage"
 import { ComprasPage } from "./pages/ComprasPage"
 
